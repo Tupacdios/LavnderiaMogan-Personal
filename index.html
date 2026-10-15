@@ -13,18 +13,25 @@
     
     <!-- PANTALLA 1: LOGIN -->
     <div id="pantalla-login" class="p-6 flex flex-col justify-center flex-grow">
+      
+      <div class="text-center mb-6">
+        <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+          Portal Actualizado v2.0
+        </span>
+      </div>
+
+      <!-- LOGO DIBUJADO EN CÓDIGO (NO NECESITA FOTO EXTERNA) -->
       <div class="text-center mb-8">
-        <!-- Logo vectorial integrado -->
-        <div class="inline-flex items-center justify-center space-x-3 mb-3 p-2">
-          <svg class="w-14 h-16 text-[#009ee3] fill-current" viewBox="0 0 100 120">
-            <path d="M52 5 C45 20, 35 25, 42 35 C48 42, 60 32, 58 22 C68 30, 62 45, 45 48 C28 51, 22 62, 28 72 C35 60, 55 58, 72 52 C78 65, 68 78, 48 76 C35 75, 25 82, 35 88 C52 92, 72 85, 76 70 C80 85, 72 115, 50 115 C28 115, 20 92, 24 75 C28 85, 38 92, 50 90 C62 88, 70 80, 65 70 C50 75, 30 78, 22 65 C15 52, 28 40, 48 38 C58 37, 62 30, 52 25 C42 20, 48 10, 52 5 Z"/>
-          </svg>
+        <div class="inline-flex items-center justify-center space-x-3 mb-2 p-3 bg-sky-50 rounded-2xl border border-sky-100">
+          <div class="w-12 h-12 bg-[#009ee3] text-white rounded-xl flex items-center justify-center text-2xl shadow-sm">
+            <i class="fa-solid fa-droplet"></i>
+          </div>
           <div class="text-left leading-none text-[#009ee3]" style="font-family: Georgia, serif;">
-            <div class="text-2xl font-normal tracking-wide">Lavandería</div>
-            <div class="text-4xl font-bold tracking-tight">Mogán</div>
+            <div class="text-xl font-normal">Lavandería</div>
+            <div class="text-3xl font-bold">Mogán</div>
           </div>
         </div>
-        <p class="text-sm font-medium text-slate-500">Acceso exclusivo para personal</p>
+        <p class="text-xs font-medium text-slate-400 mt-2">Acceso exclusivo para personal</p>
       </div>
 
       <form id="form-login" class="space-y-4" onsubmit="iniciarSesion(event)">
@@ -34,30 +41,27 @@
 
         <div>
           <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Usuario</label>
-          <div class="relative">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
-              <i class="fa-solid fa-user"></i>
-            </span>
-            <input type="text" id="usuario" placeholder="Ej: admin o tu nombre" required 
-                   class="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#009ee3] focus:outline-none text-sm">
-          </div>
+          <input type="text" id="usuario" placeholder="Escribe: admin, adai o dolly" required 
+                 class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#009ee3] focus:outline-none text-sm">
         </div>
 
         <div>
           <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Contraseña</label>
-          <div class="relative">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
-              <i class="fa-solid fa-lock"></i>
-            </span>
-            <input type="password" id="password" placeholder="••••••••" required 
-                   class="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#009ee3] focus:outline-none text-sm">
-          </div>
+          <input type="password" id="password" placeholder="••••" required 
+                 class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#009ee3] focus:outline-none text-sm">
         </div>
 
         <button type="submit" class="w-full bg-[#009ee3] hover:bg-[#0086c2] text-white font-semibold py-3.5 rounded-xl shadow-md transition">
-          Entrar al portal
+          Entrar
         </button>
       </form>
+
+      <!-- Acceso rápido para ti al panel de Administrador -->
+      <div class="mt-8 pt-4 border-t border-slate-100 text-center">
+        <button onclick="abrirAdminDirecto()" class="text-xs text-slate-500 hover:text-[#009ee3] font-semibold underline">
+          <i class="fa-solid fa-gear mr-1"></i> Entrar como Administrador (Subir horarios y nóminas)
+        </button>
+      </div>
     </div>
 
     <!-- PANTALLA 2: VISTA DE EMPLEADO -->
@@ -65,13 +69,16 @@
       <header class="bg-white border-b border-slate-200 p-4 shadow-sm">
         <div class="flex justify-between items-center mb-3">
           <div class="flex items-center space-x-2">
+            <div class="w-7 h-7 bg-[#009ee3] text-white rounded-lg flex items-center justify-center text-xs">
+              <i class="fa-solid fa-droplet"></i>
+            </div>
             <div class="leading-none text-[#009ee3]" style="font-family: Georgia, serif;">
               <span class="text-sm font-normal">Lavandería</span>
-              <span class="text-lg font-bold">Mogán</span>
+              <span class="text-base font-bold">Mogán</span>
             </div>
           </div>
-          <button onclick="cerrarSesion()" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg text-slate-600 font-medium">
-            <i class="fa-solid fa-arrow-right-from-bracket mr-1"></i> Salir
+          <button onclick="cerrarSesion()" class="text-xs bg-slate-100 px-3 py-1.5 rounded-lg text-slate-600 font-medium">
+            Salir
           </button>
         </div>
         <div class="bg-sky-50 rounded-xl p-3 flex items-center justify-between border border-sky-100">
@@ -85,88 +92,72 @@
 
       <div class="flex border-b border-slate-200 bg-white px-4">
         <button onclick="cambiarPestana('horarios')" id="tab-btn-horarios" class="flex-1 py-3 font-semibold text-sm border-b-2 border-[#009ee3] text-[#009ee3]">
-          <i class="fa-regular fa-calendar-days mr-1.5"></i> Horario semanal
+          Horario semanal
         </button>
         <button onclick="cambiarPestana('nominas')" id="tab-btn-nominas" class="flex-1 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-400">
-          <i class="fa-solid fa-file-invoice-dollar mr-1.5"></i> Mis Nóminas
+          Mis Nóminas
         </button>
       </div>
 
-      <!-- Horario del empleado -->
       <main id="seccion-horarios" class="p-4 flex-grow space-y-2">
-        <div class="flex justify-between items-center mb-2">
-          <h3 class="font-bold text-slate-800 text-sm">Turnos de esta semana</h3>
-          <span class="text-xs text-slate-500">Hora de inicio / Libre</span>
-        </div>
         <div id="contenedor-horarios-empleado" class="space-y-2"></div>
       </main>
 
-      <!-- Nóminas del empleado -->
       <main id="seccion-nominas" class="hidden p-4 flex-grow space-y-3">
-        <h3 class="font-bold text-slate-800 text-sm mb-2">Mis nóminas disponibles</h3>
         <div id="contenedor-nominas-empleado" class="space-y-2"></div>
       </main>
     </div>
 
     <!-- PANTALLA 3: PANEL DE ADMINISTRADOR -->
     <div id="pantalla-admin" class="hidden flex flex-col flex-grow bg-slate-50">
-      <header class="bg-slate-900 text-white p-4 shadow-md">
-        <div class="flex justify-between items-center">
-          <div>
-            <span class="text-[10px] uppercase tracking-wider bg-[#009ee3] text-white px-2 py-0.5 rounded font-bold">Modo Administrador</span>
-            <h2 class="text-lg font-bold mt-1">Gestión Lavandería Mogán</h2>
-          </div>
-          <button onclick="cerrarSesion()" class="text-xs bg-slate-800 hover:bg-slate-700 px-3 py-2 rounded-lg text-slate-200">
-            <i class="fa-solid fa-arrow-right-from-bracket mr-1"></i> Salir
-          </button>
+      <header class="bg-slate-900 text-white p-4 shadow-md flex justify-between items-center">
+        <div>
+          <span class="text-[10px] uppercase bg-[#009ee3] text-white px-2 py-0.5 rounded font-bold">Administrador</span>
+          <h2 class="text-base font-bold mt-1">Panel Lavandería Mogán</h2>
         </div>
+        <button onclick="cerrarSesion()" class="text-xs bg-slate-800 px-3 py-2 rounded-lg text-slate-200">
+          Salir
+        </button>
       </header>
 
-      <main class="p-4 space-y-5 flex-grow overflow-y-auto">
-        
-        <!-- Seleccionar Empleado a editar -->
+      <main class="p-4 space-y-4 flex-grow overflow-y-auto">
+        <!-- 1. Seleccionar o Crear Empleado -->
         <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-          <label class="block text-xs font-bold text-slate-700 uppercase mb-2">1. Seleccionar Empleado</label>
-          <select id="admin-select-empleado" onchange="cargarDatosEmpleadoAdmin()" class="w-full p-3 border border-slate-300 rounded-xl text-sm font-semibold bg-slate-50 focus:outline-none focus:ring-2 focus:ring-[#009ee3]">
+          <label class="block text-xs font-bold text-slate-700 uppercase mb-2">1. Elegir Empleado</label>
+          <select id="admin-select-empleado" onchange="cargarDatosEmpleadoAdmin()" class="w-full p-3 border border-slate-300 rounded-xl text-sm font-bold bg-slate-50">
           </select>
 
-          <!-- Crear nuevo empleado -->
-          <details class="mt-3 text-xs">
-            <summary class="text-[#009ee3] font-semibold cursor-pointer">+ Añadir nuevo empleado</summary>
-            <div class="mt-2 pt-2 border-t border-slate-100 flex gap-2">
-              <input type="text" id="nuevo-emp-user" placeholder="Usuario (ej: juan)" class="flex-1 p-2 border rounded-lg">
-              <input type="text" id="nuevo-emp-pass" placeholder="Clave (ej: 1234)" class="w-28 p-2 border rounded-lg">
-              <button onclick="crearEmpleado()" class="bg-[#009ee3] text-white px-3 py-2 rounded-lg font-bold">Crear</button>
+          <div class="mt-3 pt-3 border-t border-slate-100">
+            <p class="text-xs font-bold text-slate-600 mb-2">Crear nuevo empleado:</p>
+            <div class="flex gap-2">
+              <input type="text" id="nuevo-emp-user" placeholder="Nombre usuario" class="flex-1 p-2 border rounded-lg text-xs">
+              <input type="text" id="nuevo-emp-pass" placeholder="Contraseña" class="w-24 p-2 border rounded-lg text-xs">
+              <button onclick="crearEmpleado()" class="bg-[#009ee3] text-white px-3 py-2 rounded-lg text-xs font-bold">Añadir</button>
             </div>
-          </details>
+          </div>
         </div>
 
-        <!-- Editar Horario Semanal -->
+        <!-- 2. Editar Horario -->
         <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-          <h3 class="text-xs font-bold text-slate-700 uppercase mb-3">
-            <i class="fa-regular fa-clock mr-1 text-[#009ee3]"></i> 2. Asignar Hora de Inicio o Libre
-          </h3>
-          <div id="admin-lista-dias" class="space-y-2.5"></div>
-          <button onclick="guardarHorarioAdmin()" class="mt-4 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl text-sm shadow transition">
-            <i class="fa-solid fa-floppy-disk mr-1"></i> Guardar Horario Semanal
+          <h3 class="text-xs font-bold text-slate-700 uppercase mb-3">2. Editar Hora de Inicio / Día Libre</h3>
+          <div id="admin-lista-dias" class="space-y-2"></div>
+          <button onclick="guardarHorarioAdmin()" class="mt-4 w-full bg-emerald-600 text-white font-bold py-3 rounded-xl text-sm shadow">
+            Guardar Horario de la Semana
           </button>
         </div>
 
-        <!-- Subir Nómina -->
+        <!-- 3. Subir Nómina -->
         <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
-          <h3 class="text-xs font-bold text-slate-700 uppercase mb-3">
-            <i class="fa-regular fa-file-pdf mr-1 text-red-500"></i> 3. Añadir Nómina al Empleado
-          </h3>
-          <div class="space-y-3">
-            <input type="text" id="admin-mes-nomina" placeholder="Mes y Año (Ej: Octubre 2026)" class="w-full p-2.5 border border-slate-300 rounded-xl text-sm">
-            <input type="url" id="admin-url-nomina" placeholder="Enlace al PDF (Google Drive / Dropbox)" class="w-full p-2.5 border border-slate-300 rounded-xl text-sm">
-            <button onclick="agregarNominaAdmin()" class="w-full bg-[#009ee3] hover:bg-[#0086c2] text-white font-semibold py-2.5 rounded-xl text-sm transition">
-              + Publicar Nómina
+          <h3 class="text-xs font-bold text-slate-700 uppercase mb-3">3. Subir Nómina (PDF)</h3>
+          <div class="space-y-2">
+            <input type="text" id="admin-mes-nomina" placeholder="Mes (Ej: Octubre 2026)" class="w-full p-2.5 border rounded-xl text-sm">
+            <input type="url" id="admin-url-nomina" placeholder="Enlace del PDF" class="w-full p-2.5 border rounded-xl text-sm">
+            <button onclick="agregarNominaAdmin()" class="w-full bg-[#009ee3] text-white font-bold py-2.5 rounded-xl text-sm">
+              + Añadir Nómina
             </button>
           </div>
           <div id="admin-lista-nominas" class="mt-3 space-y-1.5"></div>
         </div>
-
       </main>
     </div>
 
@@ -175,65 +166,57 @@
   <script>
     const diasSemana = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
 
-    // Base de datos inicial (guardada en el teléfono)
     const datosIniciales = {
       empleados: {
         'adai': {
           pass: '1234',
           nombre: 'Adai',
-          horario: {
-            'Lunes': '07:00', 'Martes': '07:00', 'Miércoles': 'LIBRE',
-            'Jueves': '14:00', 'Viernes': '07:00', 'Sábado': '08:00', 'Domingo': 'LIBRE'
-          },
-          nominas: [
-            { mes: 'Septiembre 2026', url: '#' },
-            { mes: 'Agosto 2026', url: '#' }
-          ]
+          horario: { 'Lunes': '07:00', 'Martes': '07:00', 'Miércoles': 'LIBRE', 'Jueves': '14:00', 'Viernes': '07:00', 'Sábado': '08:00', 'Domingo': 'LIBRE' },
+          nominas: [{ mes: 'Septiembre 2026', url: '#' }]
         },
         'dolly': {
           pass: '1234',
           nombre: 'Dolly',
-          horario: {
-            'Lunes': '08:00', 'Martes': 'LIBRE', 'Miércoles': '08:00',
-            'Jueves': '08:00', 'Viernes': '14:00', 'Sábado': 'LIBRE', 'Domingo': '09:00'
-          },
-          nominas: [
-            { mes: 'Septiembre 2026', url: '#' }
-          ]
+          horario: { 'Lunes': '08:00', 'Martes': 'LIBRE', 'Miércoles': '08:00', 'Jueves': '08:00', 'Viernes': '14:00', 'Sábado': 'LIBRE', 'Domingo': '09:00' },
+          nominas: [{ mes: 'Septiembre 2026', url: '#' }]
         }
       }
     };
 
     let db = JSON.parse(localStorage.getItem('lavanderiaMoganDB')) || datosIniciales;
-    function guardarDB() {
-      localStorage.setItem('lavanderiaMoganDB', JSON.stringify(db));
+    function guardarDB() { localStorage.setItem('lavanderiaMoganDB', JSON.stringify(db)); }
+
+    function abrirAdminDirecto() {
+      const clave = prompt('Introduce la contraseña de administrador (escribe: mogan2026):');
+      if (clave === 'mogan2026') {
+        document.getElementById('pantalla-login').classList.add('hidden');
+        document.getElementById('pantalla-admin').classList.remove('hidden');
+        inicializarPanelAdmin();
+      } else if (clave !== null) {
+        alert('Contraseña incorrecta');
+      }
     }
 
     function iniciarSesion(e) {
       e.preventDefault();
       const user = document.getElementById('usuario').value.trim().toLowerCase();
       const pass = document.getElementById('password').value.trim();
-      const errorBox = document.getElementById('error-login');
 
-      // 1. Comprobar si es ADMINISTRADOR
       if (user === 'admin' && pass === 'mogan2026') {
-        errorBox.classList.add('hidden');
         document.getElementById('pantalla-login').classList.add('hidden');
         document.getElementById('pantalla-admin').classList.remove('hidden');
         inicializarPanelAdmin();
         return;
       }
 
-      // 2. Comprobar si es EMPLEADO
       if (db.empleados[user] && db.empleados[user].pass === pass) {
-        errorBox.classList.add('hidden');
         document.getElementById('pantalla-login').classList.add('hidden');
         document.getElementById('pantalla-empleado').classList.remove('hidden');
         mostrarDatosEmpleado(user);
         return;
       }
 
-      errorBox.classList.remove('hidden');
+      document.getElementById('error-login').classList.remove('hidden');
     }
 
     function cerrarSesion() {
@@ -243,20 +226,18 @@
       document.getElementById('form-login').reset();
     }
 
-    // --- FUNCIONES VISTA EMPLEADO ---
     function mostrarDatosEmpleado(userKey) {
       const emp = db.empleados[userKey];
       document.getElementById('nombre-empleado-vista').textContent = emp.nombre;
-
       const contHorarios = document.getElementById('contenedor-horarios-empleado');
       contHorarios.innerHTML = '';
       diasSemana.forEach(dia => {
         const valor = emp.horario[dia] || 'LIBRE';
-        const esLibre = valor.toUpperCase() === 'LIBRE';
+        const esLibre = valor === 'LIBRE';
         contHorarios.innerHTML += `
           <div class="p-3 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-sm">
             <span class="font-bold text-sm text-slate-800">${dia}</span>
-            <span class="${esLibre ? 'bg-slate-100 text-slate-500 border-slate-200' : 'bg-sky-50 text-[#009ee3] border-sky-200'} font-bold text-xs px-3 py-1.5 rounded-lg border">
+            <span class="${esLibre ? 'bg-slate-100 text-slate-500' : 'bg-sky-50 text-[#009ee3]'} font-bold text-xs px-3 py-1.5 rounded-lg border">
               ${esLibre ? 'LIBRE' : 'Inicio: ' + valor + ' h'}
             </span>
           </div>`;
@@ -267,23 +248,12 @@
       emp.nominas.forEach(nom => {
         contNominas.innerHTML += `
           <div class="p-4 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-sm">
-            <div class="flex items-center space-x-3">
-              <div class="w-10 h-10 rounded-lg bg-red-50 text-red-500 flex items-center justify-center text-lg">
-                <i class="fa-regular fa-file-pdf"></i>
-              </div>
-              <div>
-                <p class="font-bold text-sm text-slate-800">${nom.mes}</p>
-                <p class="text-xs text-slate-400">PDF • Nómina mensual</p>
-              </div>
-            </div>
-            <a href="${nom.url}" target="_blank" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg font-medium flex items-center gap-1.5">
-              <i class="fa-solid fa-arrow-down"></i> PDF
-            </a>
+            <span class="font-bold text-sm text-slate-800">${nom.mes}</span>
+            <a href="${nom.url}" target="_blank" class="text-xs bg-slate-100 text-slate-700 px-3 py-2 rounded-lg font-bold">Descargar PDF</a>
           </div>`;
       });
     }
 
-    // --- FUNCIONES PANEL ADMINISTRADOR ---
     function inicializarPanelAdmin() {
       const select = document.getElementById('admin-select-empleado');
       select.innerHTML = '';
@@ -303,18 +273,15 @@
         const val = emp.horario[dia] || '07:00';
         const esLibre = val === 'LIBRE';
         contDias.innerHTML += `
-          <div class="flex items-center justify-between bg-slate-50 p-2 rounded-xl border border-slate-200">
+          <div class="flex items-center justify-between bg-slate-50 p-2 rounded-xl border">
             <span class="text-xs font-bold text-slate-700 w-20">${dia}</span>
-            <input type="time" id="hora-${dia}" value="${esLibre ? '07:00' : val}" ${esLibre ? 'disabled' : ''} 
-                   class="p-1.5 border rounded-lg text-xs font-semibold bg-white disabled:opacity-40">
-            <label class="flex items-center space-x-1.5 text-xs font-semibold text-slate-600 cursor-pointer">
-              <input type="checkbox" id="libre-${dia}" ${esLibre ? 'checked' : ''} 
-                     onchange="document.getElementById('hora-${dia}').disabled = this.checked" class="rounded text-[#009ee3]">
-              <span>Día Libre</span>
+            <input type="time" id="hora-${dia}" value="${esLibre ? '07:00' : val}" ${esLibre ? 'disabled' : ''} class="p-1 border rounded text-xs bg-white">
+            <label class="flex items-center space-x-1 text-xs font-semibold">
+              <input type="checkbox" id="libre-${dia}" ${esLibre ? 'checked' : ''} onchange="document.getElementById('hora-${dia}').disabled = this.checked">
+              <span>Libre</span>
             </label>
           </div>`;
       });
-
       mostrarNominasAdmin(userKey);
     }
 
@@ -326,13 +293,13 @@
         db.empleados[userKey].horario[dia] = esLibre ? 'LIBRE' : hora;
       });
       guardarDB();
-      alert('Horario actualizado para ' + db.empleados[userKey].nombre);
+      alert('¡Horario guardado correctamente!');
     }
 
     function crearEmpleado() {
       const user = document.getElementById('nuevo-emp-user').value.trim().toLowerCase();
       const pass = document.getElementById('nuevo-emp-pass').value.trim();
-      if (!user || !pass) return alert('Rellena usuario y contraseña');
+      if (!user || !pass) return alert('Pon nombre y contraseña');
       db.empleados[user] = {
         pass: pass,
         nombre: user.charAt(0).toUpperCase() + user.slice(1),
@@ -340,25 +307,21 @@
         nominas: []
       };
       guardarDB();
-      document.getElementById('nuevo-emp-user').value = '';
-      document.getElementById('nuevo-emp-pass').value = '';
       inicializarPanelAdmin();
       document.getElementById('admin-select-empleado').value = user;
       cargarDatosEmpleadoAdmin();
-      alert('Empleado creado con éxito');
+      alert('Empleado añadido');
     }
 
     function agregarNominaAdmin() {
       const userKey = document.getElementById('admin-select-empleado').value;
       const mes = document.getElementById('admin-mes-nomina').value.trim();
       const url = document.getElementById('admin-url-nomina').value.trim() || '#';
-      if (!mes) return alert('Escribe el mes de la nómina');
+      if (!mes) return alert('Pon el mes');
       db.empleados[userKey].nominas.unshift({ mes, url });
       guardarDB();
-      document.getElementById('admin-mes-nomina').value = '';
-      document.getElementById('admin-url-nomina').value = '';
       mostrarNominasAdmin(userKey);
-      alert('Nómina añadida');
+      alert('Nómina subida');
     }
 
     function mostrarNominasAdmin(userKey) {
@@ -366,8 +329,8 @@
       lista.innerHTML = '';
       db.empleados[userKey].nominas.forEach((n, idx) => {
         lista.innerHTML += `
-          <div class="flex justify-between items-center text-xs bg-slate-50 p-2 rounded-lg border">
-            <span class="font-medium">${n.mes}</span>
+          <div class="flex justify-between items-center text-xs bg-slate-50 p-2 rounded border">
+            <span>${n.mes}</span>
             <button onclick="borrarNomina('${userKey}', ${idx})" class="text-red-500 font-bold">Borrar</button>
           </div>`;
       });
@@ -380,22 +343,8 @@
     }
 
     function cambiarPestana(pestana) {
-      const secHorarios = document.getElementById('seccion-horarios');
-      const secNominas = document.getElementById('seccion-nominas');
-      const btnHorarios = document.getElementById('tab-btn-horarios');
-      const btnNominas = document.getElementById('tab-btn-nominas');
-
-      if (pestana === 'horarios') {
-        secHorarios.classList.remove('hidden');
-        secNominas.classList.add('hidden');
-        btnHorarios.className = 'flex-1 py-3 font-semibold text-sm border-b-2 border-[#009ee3] text-[#009ee3]';
-        btnNominas.className = 'flex-1 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-400';
-      } else {
-        secHorarios.classList.add('hidden');
-        secNominas.classList.remove('hidden');
-        btnHorarios.className = 'flex-1 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-400';
-        btnNominas.className = 'flex-1 py-3 font-semibold text-sm border-b-2 border-[#009ee3] text-[#009ee3]';
-      }
+      document.getElementById('seccion-horarios').classList.toggle('hidden', pestana !== 'horarios');
+      document.getElementById('seccion-nominas').classList.toggle('hidden', pestana === 'horarios');
     }
   </script>
 </body>
