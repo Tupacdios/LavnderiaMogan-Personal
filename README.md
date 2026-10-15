@@ -1,1 +1,0 @@
-# LavanderiaMogan-Personal
