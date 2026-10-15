@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lavandería Mogán - Portal Empleados</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=bitter:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-100 font-sans text-slate-800 min-h-screen">
+
+  <div class="max-w-md mx-auto bg-white min-h-screen shadow-lg flex flex-col justify-between">
+    
+    <!-- PANTALLA 1: LOGIN -->
+    <div id="pantalla-login" class="p-6 flex flex-col justify-center flex-grow">
+      
+      <!-- Logotipo integrado directamente (nunca se rompe) -->
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center justify-center space-x-3 mb-3 p-2">
+          <!-- Icono Gota/Ola Azul -->
+          <svg class="w-14 h-16 text-[#009ee3] fill-current" viewBox="0 0 100 120">
+            <path d="M52 5 C45 20, 35 25, 42 35 C48 42, 60 32, 58 22 C68 30, 62 45, 45 48 C28 51, 22 62, 28 72 C35 60, 55 58, 72 52 C78 65, 68 78, 48 76 C35 75, 25 82, 35 88 C52 92, 72 85, 76 70 C80 85, 72 115, 50 115 C28 115, 20 92, 24 75 C28 85, 38 92, 50 90 C62 88, 70 80, 65 70 C50 75, 30 78, 22 65 C15 52, 28 40, 48 38 C58 37, 62 30, 52 25 C42 20, 48 10, 52 5 Z"/>
+          </svg>
+          <div class="text-left leading-none text-[#009ee3]" style="font-family: Georgia, serif;">
+            <div class="text-2xl font-normal tracking-wide">Lavandería</div>
+            <div class="text-4xl font-bold tracking-tight">Mogán</div>
+          </div>
+        </div>
+        <p class="text-sm font-medium text-slate-500">Acceso exclusivo para empleados</p>
+      </div>
+
+      <form id="form-login" class="space-y-4" onsubmit="iniciarSesion(event)">
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Usuario / Email</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+              <i class="fa-solid fa-user"></i>
+            </span>
+            <input type="text" id="usuario" placeholder="tu-nombre" required 
+                   class="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#009ee3] focus:outline-none text-sm">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Contraseña</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 text-slate-400">
+              <i class="fa-solid fa-lock"></i>
+            </span>
+            <input type="password" id="password" placeholder="••••••••" required 
+                   class="w-full pl-10 pr-3 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-[#009ee3] focus:outline-none text-sm">
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-[#009ee3] hover:bg-[#0086c2] text-white font-semibold py-3.5 rounded-xl shadow-md transition">
+          Entrar al portal
+        </button>
+      </form>
+    </div>
+
+    <!-- PANTALLA 2: ÁREA DE EMPLEADO -->
+    <div id="pantalla-principal" class="hidden flex flex-col flex-grow">
+      
+      <!-- Cabecera -->
+      <header class="bg-white border-b border-slate-200 p-4 shadow-sm">
+        <div class="flex justify-between items-center mb-3">
+          <div class="flex items-center space-x-2">
+            <svg class="w-7 h-8 text-[#009ee3] fill-current" viewBox="0 0 100 120">
+              <path d="M52 5 C45 20, 35 25, 42 35 C48 42, 60 32, 58 22 C68 30, 62 45, 45 48 C28 51, 22 62, 28 72 C35 60, 55 58, 72 52 C78 65, 68 78, 48 76 C35 75, 25 82, 35 88 C52 92, 72 85, 76 70 C80 85, 72 115, 50 115 C28 115, 20 92, 24 75 C28 85, 38 92, 50 90 C62 88, 70 80, 65 70 C50 75, 30 78, 22 65 C15 52, 28 40, 48 38 C58 37, 62 30, 52 25 C42 20, 48 10, 52 5 Z"/>
+            </svg>
+            <div class="leading-none text-[#009ee3]" style="font-family: Georgia, serif;">
+              <div class="text-xs font-normal">Lavandería</div>
+              <div class="text-lg font-bold">Mogán</div>
+            </div>
+          </div>
+          <button onclick="cerrarSesion()" class="text-xs bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-lg text-slate-600 font-medium">
+            <i class="fa-solid fa-arrow-right-from-bracket mr-1"></i> Salir
+          </button>
+        </div>
+        <div class="bg-sky-50 rounded-xl p-3 flex items-center justify-between border border-sky-100">
+          <div>
+            <p class="text-xs text-sky-600 font-medium">Empleado/a</p>
+            <h2 id="nombre-empleado" class="text-base font-bold text-slate-800 capitalize">Nombre</h2>
+          </div>
+          <span class="text-xs bg-white text-sky-700 font-semibold px-2.5 py-1 rounded-md border border-sky-200 shadow-sm">
+            Activo
+          </span>
+        </div>
+      </header>
+
+      <!-- Selector de Pestañas -->
+      <div class="flex border-b border-slate-200 bg-white px-4">
+        <button onclick="cambiarPestana('horarios')" id="tab-btn-horarios" class="flex-1 py-3 font-semibold text-sm border-b-2 border-[#009ee3] text-[#009ee3]">
+          <i class="fa-regular fa-calendar-days mr-1.5"></i> Horario semanal
+        </button>
+        <button onclick="cambiarPestana('nominas')" id="tab-btn-nominas" class="flex-1 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-400">
+          <i class="fa-solid fa-file-invoice-dollar mr-1.5"></i> Mis Nóminas
+        </button>
+      </div>
+
+      <!-- Pestaña 1: Horario Semanal -->
+      <main id="seccion-horarios" class="p-4 flex-grow space-y-2.5">
+        <div class="flex justify-between items-center mb-1">
+          <h3 class="font-bold text-slate-800 text-sm">Turnos de esta semana</h3>
+          <span class="text-xs text-slate-500 font-medium">Lunes a Domingo</span>
+        </div>
+
+        <div class="space-y-2">
+          <div class="p-3 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-sm">
+            <span class="font-bold text-sm text-slate-800">Lunes</span>
+            <span class="bg-sky-50 text-[#009ee3] font-bold text-xs px-3 py-1.5 rounded-lg border border-sky-200">Inicio: 07:00 h</span>
+          </div>
+          <div class="p-3 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-sm">
+            <span class="font-bold text-sm text-slate-800">Martes</span>
+            <span class="bg-sky-50 text-[#009ee3] font-bold text-xs px-3 py-1.5 rounded-lg border border-sky-200">Inicio: 07:00 h</span>
+          </div>
+          <div class="p-3 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-sm">
+            <span class="font-bold text-sm text-slate-800">Miércoles</span>
+            <span class="bg-slate-100 text-slate-500 font-bold text-xs px-3 py-1.5 rounded-lg border border-slate-200">LIBRE</span>
+          </div>
+          <div class="p-3 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-sm">
+            <span class="font-bold text-sm text-slate-800">Jueves</span>
+            <span class="bg-sky-50 text-[#009ee3] font-bold text-xs px-3 py-1.5 rounded-lg border border-sky-200">Inicio: 14:00 h</span>
+          </div>
+          <div class="p-3 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-sm">
+            <span class="font-bold text-sm text-slate-800">Viernes</span>
+            <span class="bg-sky-50 text-[#009ee3] font-bold text-xs px-3 py-1.5 rounded-lg border border-sky-200">Inicio: 07:00 h</span>
+          </div>
+          <div class="p-3 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-sm">
+            <span class="font-bold text-sm text-slate-800">Sábado</span>
+            <span class="bg-sky-50 text-[#009ee3] font-bold text-xs px-3 py-1.5 rounded-lg border border-sky-200">Inicio: 08:00 h</span>
+          </div>
+          <div class="p-3 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-sm">
+            <span class="font-bold text-sm text-slate-800">Domingo</span>
+            <span class="bg-slate-100 text-slate-500 font-bold text-xs px-3 py-1.5 rounded-lg border border-slate-200">LIBRE</span>
+          </div>
+        </div>
+      </main>
+
+      <!-- Pestaña 2: Nóminas -->
+      <main id="seccion-nominas" class="hidden p-4 flex-grow space-y-3">
+        <h3 class="font-bold text-slate-800 text-sm mb-2">Nóminas disponibles</h3>
+        <div class="space-y-2">
+          <div class="p-4 bg-white border border-slate-200 rounded-xl flex items-center justify-between shadow-sm">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-lg bg-red-50 text-red-500 flex items-center justify-center text-lg">
+                <i class="fa-regular fa-file-pdf"></i>
+              </div>
+              <div>
+                <p class="font-bold text-sm text-slate-800">Septiembre 2026</p>
+                <p class="text-xs text-slate-400">Nómina mensual</p>
+              </div>
+            </div>
+            <a href="#" onclick="alert('Descargando nómina...')" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-lg font-medium flex items-center gap-1.5">
+              <i class="fa-solid fa-arrow-down"></i> PDF
+            </a>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script>
+    function iniciarSesion(e) {
+      e.preventDefault();
+      const usuario = document.getElementById('usuario').value;
+      document.getElementById('nombre-empleado').textContent = usuario.split('@')[0];
+      document.getElementById('pantalla-login').classList.add('hidden');
+      document.getElementById('pantalla-principal').classList.remove('hidden');
+    }
+
+    function cerrarSesion() {
+      document.getElementById('pantalla-principal').classList.add('hidden');
+      document.getElementById('pantalla-login').classList.remove('hidden');
+      document.getElementById('form-login').reset();
+    }
+
+    function cambiarPestana(pestana) {
+      const secHorarios = document.getElementById('seccion-horarios');
+      const secNominas = document.getElementById('seccion-nominas');
+      const btnHorarios = document.getElementById('tab-btn-horarios');
+      const btnNominas = document.getElementById('tab-btn-nominas');
+
+      if (pestana === 'horarios') {
+        secHorarios.classList.remove('hidden');
+        secNominas.classList.add('hidden');
+        btnHorarios.className = 'flex-1 py-3 font-semibold text-sm border-b-2 border-[#009ee3] text-[#009ee3]';
+        btnNominas.className = 'flex-1 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-400';
+      } else {
+        secHorarios.classList.add('hidden');
+        secNominas.classList.remove('hidden');
+        btnHorarios.className = 'flex-1 py-3 font-semibold text-sm border-b-2 border-transparent text-slate-400';
+        btnNominas.className = 'flex-1 py-3 font-semibold text-sm border-b-2 border-[#009ee3] text-[#009ee3]';
+      }
+    }
+  </script>
+</body>
+</html>
